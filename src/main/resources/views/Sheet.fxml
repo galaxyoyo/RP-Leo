@@ -151,7 +151,7 @@
                 <Label text="    Alignement" GridPane.rowIndex="5"/>
                 <Label text="    Chance" GridPane.rowIndex="6"/>
                 <Spinner fx:id="courage" GridPane.columnIndex="1"/>
-                <Spinner fx:id="lâcheté" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Spinner fx:id="lachete" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                 <Spinner fx:id="style" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
                 <Spinner fx:id="sauvagerie" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
                 <Spinner fx:id="synergie" GridPane.columnIndex="1" GridPane.rowIndex="4"/>

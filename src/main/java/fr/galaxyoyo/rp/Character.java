@@ -26,7 +26,7 @@ public class Character
 	private final ObservableList<ObjectProperty<Disciplin>> physicDisciplins = FXCollections.observableArrayList();
 	private final ObservableList<ObjectProperty<Disciplin>> mentalDisciplins = FXCollections.observableArrayList();
 	private final IntegerProperty courage = new SimpleIntegerProperty(5);
-	private final IntegerProperty lâcheté = new SimpleIntegerProperty(5);
+	private final IntegerProperty lachete = new SimpleIntegerProperty(5);
 	private final IntegerProperty style = new SimpleIntegerProperty(4);
 	private final IntegerProperty sauvagerie = new SimpleIntegerProperty(4);
 	private final IntegerProperty synergie = new SimpleIntegerProperty(0);
@@ -101,19 +101,19 @@ public class Character
 		return courage;
 	}
 
-	public int getLâcheté()
+	public int getLachete()
 	{
-		return lâcheté.get();
+		return lachete.get();
 	}
 
-	public void setLâcheté(int lâcheté)
+	public void setLachete(int lachete)
 	{
-		this.lâcheté.set(lâcheté);
+		this.lachete.set(lachete);
 	}
 
-	public IntegerProperty lâchetéProperty()
+	public IntegerProperty lacheteProperty()
 	{
-		return lâcheté;
+		return lachete;
 	}
 
 	public int getStyle()

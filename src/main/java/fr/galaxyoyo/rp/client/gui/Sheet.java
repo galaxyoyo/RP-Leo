@@ -226,7 +226,7 @@ public class Sheet extends AbstractController
 		f = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0);
 		luck.setValueFactory(f);
 		courage.getValueFactory().valueProperty().bindBidirectional(c.courageProperty());
-		lâcheté.getValueFactory().valueProperty().bindBidirectional(c.lâchetéProperty());
+		lâcheté.getValueFactory().valueProperty().bindBidirectional(c.lacheteProperty());
 		style.getValueFactory().valueProperty().bindBidirectional(c.styleProperty());
 		sauvagerie.getValueFactory().valueProperty().bindBidirectional(c.sauvagerieProperty());
 		synergie.getValueFactory().valueProperty().bindBidirectional(c.synergieProperty());

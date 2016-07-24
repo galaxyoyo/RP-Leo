@@ -47,6 +47,12 @@ tasks.withType(Zip) { task ->
     }
 }
 
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+}
+
 publishing {
     publications {
         maven(MavenPublication) {

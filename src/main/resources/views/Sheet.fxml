@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<ScrollPane xmlns:fx="http://javafx.com/fxml/1" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/8.0.102-ea"
+            fx:controller="fr.galaxyoyo.rp.client.gui.Sheet">
+    <VBox maxWidth="Infinity">
+        <TextField fx:id="name" promptText="Nom du personnage"/>
+        <TitledPane text="Historique">
+            <TextArea fx:id="desc" maxWidth="Infinity" promptText="Historique de votre personnage, à remplir"/>
+            <font>
+                <Font name="System Bold" size="16.0"/>
+            </font>
+        </TitledPane>
+        <HBox VBox.vgrow="ALWAYS">
+            <GridPane HBox.hgrow="ALWAYS">
+                <Separator GridPane.columnSpan="3" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets>
+                            <top>15</top>
+                            <bottom>15</bottom>
+                        </Insets>
+                    </GridPane.margin>
+                </Separator>
+                <Separator orientation="VERTICAL" style="-fx-background-color: #000000; -fx-background-radius: 2;" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.rowSpan="4">
+                    <GridPane.margin>
+                        <Insets left="5" right="5"/>
+                    </GridPane.margin>
+                </Separator>
+                <GridPane GridPane.hgrow="ALWAYS">
+                    <Label text="Caractéristiques physiques" GridPane.hgrow="ALWAYS">
+                        <font>
+                            <Font name="System Bold" size="16.0"/>
+                        </font>
+                    </Label>
+                    <Label alignment="CENTER_RIGHT" text="31" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER">
+                        <font>
+                            <Font name="System Bold" size="16.0"/>
+                        </font>
+                    </Label>
+                    <Label text="       – Force" GridPane.rowIndex="1"/>
+                    <Label text="       – Endurance" GridPane.rowIndex="2"/>
+                    <Label text="       – Rapidité" GridPane.rowIndex="3"/>
+                    <Label text="       – Précision" GridPane.rowIndex="4"/>
+                    <Label text="       – Résistance" GridPane.rowIndex="5"/>
+                    <Spinner fx:id="power" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <Spinner fx:id="toughness" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    <Spinner fx:id="speed" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                    <Spinner fx:id="prec" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                    <Spinner fx:id="resistance" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                    <columnConstraints>
+                        <ColumnConstraints/>
+                        <ColumnConstraints/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints/>
+                        <RowConstraints/>
+                        <RowConstraints/>
+                        <RowConstraints/>
+                        <RowConstraints/>
+                        <RowConstraints/>
+                    </rowConstraints>
+                </GridPane>
+                <GridPane GridPane.columnIndex="2" GridPane.hgrow="ALWAYS">
+                    <Label text="Caractéristiques mentales" GridPane.hgrow="ALWAYS">
+                        <font>
+                            <Font name="System Bold" size="16.0"/>
+                        </font>
+                    </Label>
+                    <Label text="15" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER">
+                        <font>
+                            <Font name="System Bold" size="16.0"/>
+                        </font>
+                    </Label>
+                    <Label text="       – Charisme" GridPane.rowIndex="1"/>
+                    <Label text="       – Perception" GridPane.rowIndex="2"/>
+                    <Label text="       – Pouvoir Physique" GridPane.rowIndex="3"/>
+                    <Label text="       – Pouvoir Psychique" GridPane.rowIndex="4"/>
+                    <Label text="       – Pouvoir Élémentaire" GridPane.rowIndex="5"/>
+                    <Spinner fx:id="charism" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <Spinner fx:id="perception" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    <Spinner fx:id="physicPower" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                    <Spinner fx:id="psychicPower" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                    <Spinner fx:id="elementaryPower" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                    <columnConstraints>
+                        <ColumnConstraints/>
+                        <ColumnConstraints/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints/>
+                        <RowConstraints/>
+                        <RowConstraints/>
+                        <RowConstraints/>
+                        <RowConstraints/>
+                        <RowConstraints/>
+                    </rowConstraints>
+                </GridPane>
+                <GridPane fx:id="physicDisciplins" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
+                    <Label text="Disciplines physiques" GridPane.hgrow="ALWAYS">
+                        <font>
+                            <Font name="System Bold" size="16.0"/>
+                        </font>
+                    </Label>
+                    <columnConstraints>
+                        <ColumnConstraints/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints/>
+                    </rowConstraints>
+                </GridPane>
+                <Button onAction="#addPhysicDisciplin" text="    Apprendre    " GridPane.halignment="CENTER" GridPane.rowIndex="3"/>
+                <GridPane fx:id="mentalDisciplins" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
+                    <Label text="Disciplines mentales" GridPane.hgrow="ALWAYS">
+                        <font>
+                            <Font name="System Bold" size="16.0"/>
+                        </font>
+                    </Label>
+                    <columnConstraints>
+                        <ColumnConstraints/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints/>
+                    </rowConstraints>
+                </GridPane>
+                <Button onAction="#addMentalDisciplin" text="    Apprendre    " GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3"/>
+                <columnConstraints>
+                    <ColumnConstraints/>
+                    <ColumnConstraints/>
+                    <ColumnConstraints/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                </rowConstraints>
+            </GridPane>
+        </HBox>
+        <TitledPane text="Traits de caractère">
+            <font>
+                <Font name="System Bold" size="16.0"/>
+            </font>
+            <GridPane>
+                <Label text="    Courage"/>
+                <Label text="    Lâcheté" GridPane.rowIndex="1"/>
+                <Label text="    Style" GridPane.rowIndex="2"/>
+                <Label text="    Sauvagerie" GridPane.rowIndex="3"/>
+                <Label text="    Synergie" GridPane.rowIndex="4"/>
+                <Label text="    Alignement" GridPane.rowIndex="5"/>
+                <Label text="    Chance" GridPane.rowIndex="6"/>
+                <Spinner fx:id="courage" GridPane.columnIndex="1"/>
+                <Spinner fx:id="lâcheté" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Spinner fx:id="style" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <Spinner fx:id="sauvagerie" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                <Spinner fx:id="synergie" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                <Spinner fx:id="alignment" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                <Spinner fx:id="luck" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+            </GridPane>
+        </TitledPane>
+        <TitledPane text="Capacité spéciales">
+            <font>
+                <Font name="System Bold" size="16.0"/>
+            </font>
+            <VBox fx:id="specialAbilities">
+                <Button text="Ajouter" alignment="CENTER" maxWidth="Infinity" onAction="#addSpecialAbility"/>
+            </VBox>
+        </TitledPane>
+        <TitledPane text="Effets spéciaux &amp; blessures">
+            <font>
+                <Font name="System Bold" size="16.0"/>
+            </font>
+            <VBox fx:id="specialEffects">
+                <Button text="Ajouter" alignment="CENTER" maxWidth="Infinity" onAction="#addSpecialEffect"/>
+            </VBox>
+        </TitledPane>
+        <TitledPane text="Équipement">
+            <font>
+                <Font name="System Bold" size="16.0"/>
+            </font>
+            <TableView fx:id="equipment" maxWidth="Infinity"/>
+            <TableView fx:id="bag" maxWidth="Infinity"/>
+        </TitledPane>
+    </VBox>
+</ScrollPane>

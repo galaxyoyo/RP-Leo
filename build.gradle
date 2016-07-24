@@ -1,0 +1,75 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'application'
+apply plugin: 'maven-publish'
+
+group 'fr.galaxyoyo'
+version '1.0-SNAPSHOT'
+archivesBaseName = 'RP'
+mainClassName = 'fr.galaxyoyo.rp.RP'
+sourceCompatibility = 1.8
+
+configurations {
+    included
+    compile.extendsFrom included
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    included 'com.google.code.gson:gson:2.7'
+    included 'io.netty:netty-all:5.0.0.Alpha2'
+    included 'com.google.protobuf:protobuf-java:3.0.0-beta-2'
+}
+
+task fatjar(type: Jar) {
+    baseName = archivesBaseName
+
+    from {
+        //noinspection GroovyAssignabilityCheck
+        configurations.included.collect {
+            it.isDirectory() ? it : zipTree(it).matching { exclude { it.toString().contains('META-INF') && it.toString() != "META-INF" } }
+        }
+    }
+    with jar
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Zip) { task ->
+    task.doLast {
+        ant.checksum file: it.archivePath
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId group
+            artifactId archivesBaseName.toLowerCase()
+            version = version
+
+            from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            url "$buildDir/repo"
+        }
+    }
+}
+
+run {
+    if (project.hasProperty("appArgs")) {
+        args Eval.me(appArgs)
+    }
+}
+
+publish.dependsOn fatjar
+fatjar.dependsOn jar

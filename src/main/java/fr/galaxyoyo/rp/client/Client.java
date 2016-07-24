@@ -1,6 +1,7 @@
 package fr.galaxyoyo.rp.client;
 
 import fr.galaxyoyo.rp.Player;
+import fr.galaxyoyo.rp.RP;
 import fr.galaxyoyo.rp.client.gui.AbstractController;
 import fr.galaxyoyo.rp.client.gui.Overview;
 import io.netty.bootstrap.Bootstrap;
@@ -64,7 +65,7 @@ public class Client extends Application
 			Bootstrap boot = new Bootstrap().group(group).channel(NioSocketChannel.class).option(ChannelOption.TCP_NODELAY, true).option(ChannelOption.SO_KEEPALIVE, true)
 					.option(ChannelOption.SO_RCVBUF, 0x42666).option(ChannelOption.RCVBUF_ALLOCATOR, new FixedRecvByteBufAllocator(0x42666))
 					.option(ChannelOption.SO_REUSEADDR, false).handler(new ClientChannelInitializer());
-			ChannelFuture f = boot.connect("localhost", 42999);
+			ChannelFuture f = boot.connect(RP.isDebug() ? "localhost" : "rp.arathia.fr", 42999);
 			f.get(1, TimeUnit.SECONDS);
 			f.awaitUninterruptibly();
 		}

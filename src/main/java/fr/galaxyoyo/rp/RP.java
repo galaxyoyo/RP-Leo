@@ -10,7 +10,7 @@ public class RP
 {
 	private static final Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(Character.class, new CharacterAdapter())
 			.registerTypeAdapter(ObjectProperty.class, new ObjectPropertyAdapter()).create();
-	private static boolean server = false;
+	private static boolean server = false, debug = false;
 
 	public static Gson getGson()
 	{
@@ -25,6 +25,8 @@ public class RP
 
 		if (joined.toLowerCase().contains("--server"))
 			server = true;
+		if (joined.toLowerCase().contains("--debug"))
+			debug = true;
 
 		if (server)
 			Server.setup();
@@ -35,5 +37,10 @@ public class RP
 	public static boolean isServer()
 	{
 		return server;
+	}
+
+	public static boolean isDebug()
+	{
+		return debug;
 	}
 }

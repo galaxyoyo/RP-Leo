@@ -179,8 +179,17 @@
             <font>
                 <Font name="System Bold" size="16.0"/>
             </font>
-            <TableView fx:id="equipment" maxWidth="Infinity"/>
-            <TableView fx:id="bag" maxWidth="Infinity"/>
+            <VBox>
+                <TableView fx:id="equipment" maxWidth="Infinity"/>
+                <TableView fx:id="bag" maxWidth="Infinity"/>
+                <GridPane>
+                    <Label text="Catégorie d'endurance :" style="-fx-font-weight: bold;"/>
+                    <Label text="Encombrement :" style="-fx-font-weight: bold;" GridPane.columnIndex="2"/>
+                    <Label text="Possession :" style="-fx-font-weight: bold;" GridPane.rowIndex="1"/>
+                    <TextField editable="false" disable="true" fx:id="enduranceCategory" GridPane.columnIndex="1"/>
+                    <Spinner fx:id="encombrement" editable="true" GridPane.columnIndex="3"/>
+                </GridPane>
+            </VBox>
         </TitledPane>
     </VBox>
 </ScrollPane>

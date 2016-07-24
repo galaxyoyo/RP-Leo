@@ -9,6 +9,7 @@ import fr.galaxyoyo.rp.packets.PacketMixSendModification;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -100,6 +101,12 @@ public class Sheet extends AbstractController
 
 	@FXML
 	private TableView bag;
+
+	@FXML
+	private TextField enduranceCategory;
+
+	@FXML
+	private Spinner<Number> encombrement;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -263,6 +270,61 @@ public class Sheet extends AbstractController
 
 		for (StringProperty p : c.getSpecialEffects())
 			addSpecialEffect(p);
+
+		TableColumn<String, String> equip = new TableColumn<>("Équipement");
+		equip.prefWidthProperty().bind(equipment.widthProperty().divide(5));
+		TableColumn<String, String> name = new TableColumn<>("Nom");
+		name.prefWidthProperty().bind(equipment.widthProperty().divide(5));
+		TableColumn<String, String> value = new TableColumn<>("Valeur");
+		value.prefWidthProperty().bind(equipment.widthProperty().divide(5));
+		TableColumn<String, String> strength = new TableColumn<>("Poids");
+		strength.prefWidthProperty().bind(equipment.widthProperty().divide(5));
+		TableColumn<String, String> special = new TableColumn<>("Spécial");
+		special.prefWidthProperty().bind(equipment.widthProperty().divide(5));
+		equipment.getColumns().addAll(equip, name, value, strength, special);
+
+		TableColumn<String, String> backpack = new TableColumn<>("Sac à dos");
+		backpack.prefWidthProperty().bind(bag.widthProperty().divide(2));
+		TableColumn<String, String> pocket = new TableColumn<>("Sacoche(s)");
+		pocket.prefWidthProperty().bind(bag.widthProperty().divide(2));
+		bag.getColumns().addAll(backpack, pocket);
+
+		ChangeListener<Number> listener = (observableValue, number, t1) ->
+		{
+			int sum = c.getPower() + c.getToughness();
+			String result;
+			if (sum <= 2)
+				result = "Très léger";
+			else if (sum <= 4)
+				result = "Léger";
+			else if (sum <= 6)
+				result = "Modérément Léger";
+			else if (sum <= 8)
+				result = "Stable";
+			else if (sum <= 10)
+				result = "Modérément Lourd";
+			else if (sum <= 12)
+				result = "Lourd";
+			else if (sum <= 14)
+				result = "Très Lourd";
+			else if (sum <= 16)
+				result = "Mule";
+			else if (sum <= 18)
+				result = "Bête de Somme";
+			else if (sum <= 20)
+				result = "Colosse";
+			else
+				result = "Titan";
+
+			enduranceCategory.setText(result);
+		};
+
+		c.powerProperty().addListener(listener);
+		c.toughnessProperty().addListener(listener);
+
+		f = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Integer.MAX_VALUE, 0);
+		encombrement.setValueFactory(f);
+		f.valueProperty().bindBidirectional(c.encombrementProperty());
 	}
 
 	public void addPhysicDisciplin(Disciplin disciplin)

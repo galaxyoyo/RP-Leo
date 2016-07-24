@@ -34,6 +34,7 @@ public class Character
 	private final IntegerProperty luck = new SimpleIntegerProperty(0);
 	private final ObservableList<StringProperty> specialAbilities = FXCollections.observableArrayList();
 	private final ObservableList<StringProperty> specialEffects = FXCollections.observableArrayList();
+	private final IntegerProperty encombrement = new SimpleIntegerProperty(0);
 	private UUID uuid;
 
 	public Character()
@@ -68,6 +69,21 @@ public class Character
 				e.printStackTrace();
 			}
 		}
+	}
+
+	public int getEncombrement()
+	{
+		return encombrement.get();
+	}
+
+	public void setEncombrement(int encombrement)
+	{
+		this.encombrement.set(encombrement);
+	}
+
+	public IntegerProperty encombrementProperty()
+	{
+		return encombrement;
 	}
 
 	public int getCourage()

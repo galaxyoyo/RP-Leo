@@ -73,7 +73,7 @@ public class Sheet extends AbstractController
 	private Spinner<Number> courage;
 
 	@FXML
-	private Spinner<Number> lâcheté;
+	private Spinner<Number> lachete;
 
 	@FXML
 	private Spinner<Number> style;
@@ -214,7 +214,7 @@ public class Sheet extends AbstractController
 		f = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 5);
 		courage.setValueFactory(f);
 		f = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 5);
-		lâcheté.setValueFactory(f);
+		lachete.setValueFactory(f);
 		f = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 8, 4);
 		style.setValueFactory(f);
 		f = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 8, 4);
@@ -226,7 +226,7 @@ public class Sheet extends AbstractController
 		f = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0);
 		luck.setValueFactory(f);
 		courage.getValueFactory().valueProperty().bindBidirectional(c.courageProperty());
-		lâcheté.getValueFactory().valueProperty().bindBidirectional(c.lacheteProperty());
+		lachete.getValueFactory().valueProperty().bindBidirectional(c.lacheteProperty());
 		style.getValueFactory().valueProperty().bindBidirectional(c.styleProperty());
 		sauvagerie.getValueFactory().valueProperty().bindBidirectional(c.sauvagerieProperty());
 		synergie.getValueFactory().valueProperty().bindBidirectional(c.synergieProperty());
@@ -239,10 +239,10 @@ public class Sheet extends AbstractController
 		{
 			if (modifying.getAndSet(true))
 				return;
-			lâcheté.getValueFactory().setValue(10 - t1.intValue());
+			lachete.getValueFactory().setValue(10 - t1.intValue());
 			modifying.set(false);
 		});
-		lâcheté.valueProperty().addListener((observableValue, number, t1) ->
+		lachete.valueProperty().addListener((observableValue, number, t1) ->
 		{
 			if (modifying.getAndSet(true))
 				return;

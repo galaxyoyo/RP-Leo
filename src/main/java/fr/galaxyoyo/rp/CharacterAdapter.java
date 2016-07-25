@@ -121,6 +121,10 @@ public class CharacterAdapter extends TypeAdapter<Character>
 							p.setValue(in.nextString());
 						else if (in.peek() == JsonToken.NUMBER)
 							p.setValue(in.nextInt());
+						else
+						{
+							System.out.println(in.peek());
+						}
 						break;
 				}
 			}

@@ -18,6 +18,7 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -40,7 +41,8 @@ public class Server
 
 			if (file.exists())
 			{
-				List<Character> allCharacters = RP.getGson().fromJson(new FileReader(file), new TypeToken<ArrayList<Character>>() {}.getType());
+				List<Character> allCharacters = RP.getGson().fromJson(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8), new TypeToken<ArrayList<Character>>() {}
+						.getType());
 				instance.characters.addAll(allCharacters);
 			}
 			else
@@ -90,7 +92,7 @@ public class Server
 			File file = new File("characters.json");
 			//noinspection ResultOfMethodCallIgnored
 			file.createNewFile();
-			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8));
 			RP.getGson().toJson(instance.characters, bw);
 			bw.close();
 		}

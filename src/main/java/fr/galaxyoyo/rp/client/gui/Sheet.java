@@ -322,6 +322,8 @@ public class Sheet extends AbstractController
 		c.powerProperty().addListener(listener);
 		c.toughnessProperty().addListener(listener);
 
+		listener.changed(null, 0, 0);
+
 		f = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Integer.MAX_VALUE, 0);
 		encombrement.setValueFactory(f);
 		f.valueProperty().bindBidirectional(c.encombrementProperty());
